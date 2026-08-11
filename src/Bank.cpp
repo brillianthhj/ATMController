@@ -1,5 +1,4 @@
 #include "Bank.h"
-#include <iostream>
 
 Bank::Bank() {
     initializeBankSystem();
