@@ -9,7 +9,13 @@ find_package(GTest REQUIRED)
 
 enable_testing()
 
-add_executable(ATMController main.cpp)
+add_library(bankLib STATIC
+    src/Bank.cpp
+    src/Account.cpp
+)
+target_include_directories(bankLib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_executable(ATMController ATMController.cpp)
+target_link_libraries(ATMController PRIVATE bankLib)
 
 include(GoogleTest)
 
