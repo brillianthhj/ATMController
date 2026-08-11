@@ -3,6 +3,10 @@
 #include <string>
 #include "Bank.h"
 
+void cinClear() {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
 
 int main() {
     // Initialize Bank class
@@ -48,8 +52,7 @@ int main() {
                 std::cout << "==> Your current balance is: $" << bank.getBalance() << std::endl;
             } else {
                 std::cout << "Inavalid amount. Please try again!\n";
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cinClear();
             }
 
         } else if (choice == 3) {
@@ -62,18 +65,16 @@ int main() {
                 std::cout << "==> Your current balance is: $" << bank.getBalance() << std::endl;
             } else {
                 std::cout << "Inavalid amount. Please try again!\n";
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cinClear();
             }
 
         } else if (choice == 4) {
-            std::cout << "Thank you for using Bear Bank ATM. Goodbye!" << std::endl;
-            std::cout << "\n";
+            std::cout << "Thank you for using Bear Bank ATM. Goodbye!\n" << std::endl;
             break;
 
         } else {
-            std::cout << "Invalid option. Please try again." << std::endl;
-            std::cout << "\n";
+            std::cout << "Invalid option. Please try again.\n" << std::endl;
+            cinClear();
         }
     }
 

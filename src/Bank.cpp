@@ -19,28 +19,6 @@ void Bank::addAccount(const Account& account) {
     accounts.push_back(account);
 }
 
-Account* Bank::getAccount(const std::string& accountNum) {
-    for (auto& acc : accounts) {
-        if (acc.getAccountNumber() == accountNum) {
-            return &acc;
-        }
-    }
-
-    return nullptr;
-}
-
-long long Bank::getBalance() {
-    return currentAccount->getBalance();
-}
-
-bool Bank::withdraw(long long amount) {
-    return currentAccount->withdraw(amount);
-}
-
-void Bank::deposit(long long amount) {
-    return currentAccount->deposit(amount);
-}
-
 bool Bank::verifyAccountAndPinNum(const std::string& accountNum, const std::string& pinNum) {
     currentAccount = getAccount(accountNum);
     // if not searched, create account
@@ -56,4 +34,39 @@ bool Bank::verifyAccountAndPinNum(const std::string& accountNum, const std::stri
     }
 
     return true;
+}
+
+Account* Bank::getAccount(const std::string& accountNum) {
+    for (auto& acc : accounts) {
+        if (acc.getAccountNumber() == accountNum) {
+            return &acc;
+        }
+    }
+
+    return nullptr;
+}
+
+bool Bank::isCurrentAccountNullPtr() {
+    return currentAccount == nullptr;
+}
+
+long long Bank::getBalance() const {
+    if (currentAccount == nullptr)
+        return -1;
+
+    return currentAccount->getBalance();
+}
+
+bool Bank::withdraw(long long amount) {
+    if (currentAccount == nullptr)
+        return false;
+
+    return currentAccount->withdraw(amount);
+}
+
+void Bank::deposit(long long amount) {
+    if (currentAccount == nullptr)
+        return;
+
+    return currentAccount->deposit(amount);
 }

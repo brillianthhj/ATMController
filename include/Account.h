@@ -2,7 +2,7 @@
 
 class Account {
 public:
-    Account() {}
+    Account() : accountNumber(""), pinNumber(""), balance(0) {}
     Account(const std::string& accountNum, const std::string& pinNum, long long balance)
         : accountNumber(accountNum), pinNumber(pinNum), balance(balance) {}
 
