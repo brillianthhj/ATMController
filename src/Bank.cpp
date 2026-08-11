@@ -64,9 +64,9 @@ bool Bank::withdraw(long long amount) {
     return currentAccount->withdraw(amount);
 }
 
-void Bank::deposit(long long amount) {
+bool Bank::deposit(long long amount) {
     if (currentAccount == nullptr)
-        return;
+        return false;
 
     return currentAccount->deposit(amount);
 }

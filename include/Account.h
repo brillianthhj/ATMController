@@ -10,7 +10,7 @@ public:
     std::string getPinNumber() const;
     long long getBalance() const;
 
-    void deposit(long long amount);
+    bool deposit(long long amount);
     bool withdraw(long long amount);
 
 private:

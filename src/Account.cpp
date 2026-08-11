@@ -13,13 +13,15 @@ long long Account::getBalance() const {
     return balance;
 }
 
-void Account::deposit(long long amount) {
+bool Account::deposit(long long amount) {
     if (amount < 0) {
         std::cout << "Wrong amount of money: " << amount << std::endl;
-        return;
+        return false;
     }
 
     balance += amount;
+
+    return true;
 }
 
 bool Account::withdraw(long long amount) {
@@ -29,6 +31,7 @@ bool Account::withdraw(long long amount) {
     }
 
     if (balance - amount < 0) {
+        std::cout << "Not enogh money to withdraw\n";
         return false;
     }
 

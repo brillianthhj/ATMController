@@ -13,14 +13,14 @@ public:
 
     long long getBalance() const;
     bool withdraw(long long amount);
-    void deposit(long long amount);
+    bool deposit(long long amount);
 
     bool verifyAccountAndPinNum(const std::string& accountNum, const std::string& pinNum);
     bool isCurrentAccountNullPtr();
 
 private:
     std::vector<Account> accounts;
-    Account* currentAccount;
+    Account* currentAccount = nullptr;
 };
 
 
